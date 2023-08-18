@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>:247</title>
+	<link rel="icon" href="favicon.ico">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -123,8 +124,8 @@
         <div class="line">
             <div style="background-color: {{ item['color'] }};"></div>
             {{ item['text'] }}
-            {{ item['timestamp'] }}
-	    <p> Action: {{ item['status'] }} </p>
+            <p> {{ item['timestamp'] }}
+				Action: {{ item['status'] }} </p>
         </div>
     {% endfor %}
 </body>
