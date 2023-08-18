@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:247</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            font-weight: bold;
+        }
+
+        form input[type="text"],
+        form input[type="color"],
+        form button {
+            margin: 5px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: green;
+            color: white;
+            cursor: pointer;
+        }
+
+        .select-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style the select element */
+        .styled-select {
+            appearance: none; /* Removes default appearance */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            padding: 8px 40px 8px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Style the arrow icon */
+        .select-arrow {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+
+	.line {
+	    margin: 10px;
+	    padding: 10px;
+	    background-color: #fff;
+	    border: 1px solid #ccc;
+	    border-radius: 5px;
+	    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	    display: flex;
+	    align-items: center;
+	    justify-content: space-between;
+	}
+
+	.line div {
+	    width: 50px;
+	    height: 50px;
+	}
+
+	.line p {
+	    margin: 0;
+	}
+
+        .error-link {
+            color: white;
+            background-color: grey;
+            text-decoration: none;
+            padding: 10px;
+            margin-left: 5px;
+        }
+
+        .complete-link {
+            color: white;
+            background-color: green;
+            text-decoration: none;
+            padding: 10px;
+            margin-left: 5px;
+        }
+
+        .top-link {
+            color: white;
+            background-color: teal;
+            text-decoration: none;
+            padding: 10px;
+            margin-left: 5px;
+        }
+
+        .remove-link {
+            color: white;
+            background-color: red;
+            text-decoration: none;
+            padding: 10px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Workload Management App :247</h1>
+
+    <br> <br>
+
+    <form method="POST">
+        <label for="text">Text: </label>
+        <input type="text" name="text" required>
+        <label for="color">Color: </label>
+        <select name="color" required >
+            <option value="maroon">Red</option>
+            <option value="blue">Blue</option>
+            <option value="lime">Green</option>
+            <option value="yellow">Yellow</option>
+            <option value="orange">Orange</option>
+            <option value="purple">Purple</option>
+            <option value="black">Black</option>
+        </select>
+        <button type="submit"> + </button>
+    </form>
+
+    <br>
+
+    <a href="/history" style="margin: 10px;text-decoration:none;border-radius:5px;float:right;background-color:grey;color:white;
+    padding:10px;margin-left:5px;"> Input History </a>
+
+    <h2>Tasks: </h2>
+    {% for item in data %}
+        <div class="line">
+            <div style="background-color: {{ item['color'] }};"></div>
+            {{ item['text'] }}
+            <p>
+            {{ item['timestamp'] }}
+            <a class="top-link" href="/top/{{ loop.index0 }}"> ^ </a>
+            <a class="error-link" href="/error/{{ loop.index0 }}"> - </a>
+            <a class="complete-link" href="/complete/{{ loop.index0 }}"> √ </a>
+            <a class="remove-link" href="/remove/{{ loop.index0 }}"> x </a>
+            </p>
+        </div>
+    {% endfor %}
+</body>
+</html>
+
